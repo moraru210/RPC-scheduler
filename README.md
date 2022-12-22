@@ -4,7 +4,7 @@
 
 ## Introduction
 
-## Background
+## Background 
 
 ## Project Plan
 
