@@ -66,7 +66,3 @@ Although this is promising, the biggest issue it faces is that these solutions a
 5. https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/44271.pdf
 6. https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf
 7. https://www.barroso.org/publications/TheTailAtScale.pdf
-
-## Questions to ask:
-1. Should I dicuss basic networking (how TCP or UDP works?) - and as a result discuss benefits of TLS for industry?
-2. Is there any need for an explanation for FCFS?
