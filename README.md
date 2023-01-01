@@ -53,10 +53,23 @@ Recent progress have introduced the use of content-based routing architectures w
 Although this is promising, the biggest issue it faces is that these solutions are UDP-based. This restricts clients to using a custom UDP-based protocol where they would implement loss recovery and congestion control functionality themselves, which is a non-trivial task. In addition, since it does not fuly support TCP it lacks support for industry standrd TLS security or popular application-level protocols. As a result, despite it's great progress in the academic field, industry is not keen to adopt it yet. 
 
 ## Project Plan
+This project provides alternative load balancing solutions to ones that are currently deployed in industry, with an aim of improving throughput and tail-latency while maintaining industry standard security provided by TCP. 
+
+The first step of the project is understanding what industry currently deploys, while understanding the benefits it brings. Understanding current solutions allows the project to identify the key points industry requires from a load balancing system, which we we keep in mind when developing the alternative solutions. It is also vital that we are able to stress test the current solution in order to use it as a baseline/comparison point to our alternative solutions.
+
+After developing a solid grasp of current load balancing solutions, the project would require rigorous planning on finding methods of improving TCP-based solutions by reducing the costs of connection setups. Presumably this plan will potentially persist the connection that is setup by the front-end server of the load balancer system.
+
+The next step would entail exploring kernel-bypassing libraries, and incorporating them in an alternative load balancing solution. This would allow us to further reduce latency of processing network packets since it reduces the number of levels involved from the OSI networking model.
+
+If time does not become an issue to the project, it would be ideal to finally explore in-network solutions. This would involve working with programmable switches alongside P4, where we can further reduce the latency of processing network packets.
 
 ## Evaluation Plan
 
 ## Ethical Issues
+This project explores areas of improvement within current load balancing systems/architectures that are developed by academia and deployed in industry. It is the project's intention to please standards required in industry by encapsulating the security that is already provided by TCP, however it is important to note that there is no intention to improve upon it secuirty-wise as the project focuses on tail-latency and throughput instead.
+
+
+
 
 ## References
 1. https://www.usenix.org/system/files/atc19-kogias-r2p2_0.pdf
