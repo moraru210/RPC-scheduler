@@ -39,9 +39,12 @@ We also should note that FCFS allocation performs better in regards to tail late
 Load balancers encapsulate a set or worker nodes behind a single virtual IP address with the aim of providing high availability. They have the responsibility to deciding which node to serve the request it recieves, which has an effect on tail-latency and throughput (as mentioned in the previous section). Load balancers can be implemented in either software or in hardware instead and can be identified in either the layer 4 and layer 7 load balancer categories.
 
 #### Layer 4 [1]
-Layer 4 (also referred as 'network') load balancers operate at the transport-level of the OSI model by using the 5 tuple information of TCP or UDP flow to make a decision on which worker node to assign the request to. The assign is static and independent of the load.
+Layer 4 (also referred as 'network') load balancers operate at the transport-level of the OSI model by using the 5 tuple information of TCP or UDP flow to make a decision on which worker node to assign the request to. The assignment is static and independent of the load.
 
-#### Layer 7
+#### Layer 7 [1, 8]
+This category of load balancers operate at the 'application' level of the OSI networking model as it deals with the message in each packet. Layer 7 load balancers are then able to implement dynamic policies for assignment as a result. It is typically applied to TCP-based traffic such as HTTP. In addition, the load balancer terminates the TCP connection with the client after receiving the message to pass upstream. It can use the content of the message to make a decision on which worker node to forward the message to, and does so by creating a new TCP connection with the selected worker node.
+
+The benefits of being able to apply dynamic policies allows the load balancing system to handle and mitigate tail-latency better. However, the added complexity of the being able to implement dynamic policies does mean that layer 7 load balancers are more CPU intensive than layer 4. There is also a scalability issue that arises when all of the request and responses in a system traverses through a proxy.
 
 ### Current Architectures
 #### Issues with Reverse Proxy Architecture [2]:
@@ -79,3 +82,4 @@ This project explores areas of improvement within current load balancing systems
 5. https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/44271.pdf
 6. https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf
 7. https://www.barroso.org/publications/TheTailAtScale.pdf
+8. https://www.nginx.com/resources/glossary/layer-7-load-balancing/#:~:text=Layer%207%20load%20balancing%20allows,to%20serve%20up%20multimedia%20content.
